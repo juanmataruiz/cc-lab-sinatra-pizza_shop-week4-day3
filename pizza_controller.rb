@@ -1,6 +1,6 @@
 require( 'sinatra' )
 require( 'sinatra/contrib/all' )
-require( 'pry-byebug' )
+require( 'pry' )
 
 require_relative('./models/pizza_order')
 
@@ -38,15 +38,12 @@ post "/pizza_orders/:id/updated" do
   @order_to_update = PizzaOrder.new(params)
   @order_to_update.update()
   redirect "/pizza_orders"
-  
 end
 
 
 # DELETE orders
-
 post "/pizza_orders/:id/delete" do
   @order_to_delete = PizzaOrder.find(params[:id].to_i)
   @order_to_delete.delete()
   redirect "/pizza_orders"
-
 end
